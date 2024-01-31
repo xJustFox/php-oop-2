@@ -1,80 +1,83 @@
-<?php 
-    // CLASSE GENITORE
-    class Product{
-        public $brand;
-        public $name;
-        public $img;
-        public $price;
-        public $description;
-
-        public function __construct($_brand,$_name,$_img,$_price,$_description,Category $_category){
-            $this->brand = $_brand;
-            $this->name = $_name;
-            $this->img = $_img;
-            $this->price = $_price;
-            $this->description = $_description;
-        }
-    }
-
-    //CLASSE ANIMALI
-    class Category{
-        public $animal;
-
-        public function __construct($_animal){
-            $this->animal = $_animal;
-        }
-    }
-
-    // CLASSI FIGLIE
-    class Food extends Product{
-        public $amount;
-        public $category;
-
-        public function __construct($_brand,$_name,$_img,$_price,$_description,$_category,$_amount){
-
-            parent::__construct($_brand,$_name,$_img,$_price,$_description,$_category);
-            $this->amount = $_amount;
-            $this->category = $_category;
-        }
-    }
-
-    class Toy extends Product{
-        public $material;
-        public $category;
-
-        public function __construct($_brand,$_name,$_img,$_price,$_description,$_category,$_material){
-
-            parent::__construct($_brand,$_name,$_img,$_price,$_description,$_category);
-            $this->material = $_material;
-            $this->category = $_category;
-        }
-    }
-
-    class Accessories extends Product{
-        public $category;
-
-        public function __construct($_brand,$_name,$_img,$_price,$_description,$_category){
-
-            parent::__construct($_brand,$_name,$_img,$_price,$_description,$_category);
-            $this->category = $_category;
-        }
-    }
-
-    $dog = new Category('Cane');
-    $cat = new Category('Gatto');
-    $bird = new Category('Uccelli');
-    $fish = new Category('Pesci');
-
-    $croccantini_1 = new Food('Royal Canin','Mini Adult','https://arcaplanet.vtexassets.com/arquivos/ids/284621/Mini-Adult.jpg?v=638182891693570000',14.50,'Croccanti per cani adulti di taglia piccola, da 1 a 10 kg di peso.',$dog,200);
-    $croccantini_2 = new Food('Almo Nature','Holistic Medium Adult con Pollo','https://arcaplanet.vtexassets.com/arquivos/ids/245173/almo-nature-holistic-cane-adult-medium-pollo-e-riso.jpg',39.89,'Croccanti per cani adulti.',$dog,1500);
-    $umido = new Food('Almo Nature','Cat Daily Lattina','https://arcaplanet.vtexassets.com/arquivos/ids/245336/almo-daily-menu-cat-400-gr-vitello.jpg',1.27,'Alimento umido in lattina, per gatti adulti.',$cat,400);
-    $mangime = new Food('Tetra','Mangime per Pesci Guppy in Fiocchi','https://arcaplanet.vtexassets.com/arquivos/ids/272714/tetra-guppy-mini-flakes.jpg',3.41,'Fiocchi appositamente formulati per soddisfare le esigenze nutrizionali dei pesci guppy e altri pesci vivipari.',$fish,30);
-    $gabbie = new Accessories('Ferplast','Voliera Wilma in Legno','https://arcaplanet.vtexassets.com/arquivos/ids/258384/voliera-wilma1.jpg',335.85,'Una raffinata e spaziosa voliera per canarini.', $bird);
-    $filtri = new Accessories('Tetra','Cartucce Filtranti per Filtro EasyCrystal','https://arcaplanet.vtexassets.com/arquivos/ids/272741/tetra-easycrystal-filterpack-250-300.jpg',10.80,"Per un'acqua cristallina e sana innovative cartucce filtranti.",$fish);
-    $giocattolo_1 = new Toy('Kong','Classic','https://arcaplanet.vtexassets.com/arquivos/ids/256599/kong-classic1.jpg',5.69,'Salta e rimbalza di qua e di là, soddisfa il bisogno di masticare e di giocare del cane',$dog,'plastica');
-    $giocattolo_2 = new Toy('Trixie','Topini di peluche','https://arcaplanet.vtexassets.com/arquivos/ids/223852/trixie-gatto-gioco-active-mouse-peluche.jpg',4.49,'Topini in peluche grigio e bianco, con interno in catnip pressato, esterno morbido, codina in corda.',$cat,'peluche');
-
-    $product_list= [$croccantini_1,$croccantini_2,$umido,$mangime,$gabbie,$filtri,$giocattolo_1,$giocattolo_2];
-
-    var_dump($product_list);
+<?php
+require_once __DIR__ . '/db.php';
 ?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-lg">
+        <div class="row">
+            <div class="col-12">
+                <h1>Food</h1>
+            </div>
+            <?php foreach ($products_food as $product) { ?>
+                <div class="col-4 py-3">
+                    <div class="card" style="width: 18rem;">
+                        <?php echo '<img src="'.$product->img.'" class="card-img-top" alt="">' ?>
+                        <div class="card-body">
+                            <h6 class="card-title"><?php echo $product->name ?></h6>
+                            <div class="card-text"><?php echo 'Prezzo: '.$product->price.'$'?></div>
+                            <div class="card-text h-50 "><?php echo 'Descrizione: '.$product->description ?></div>
+                            <div><?php echo 'Quantità: '.$product->amount.'g';?></div>
+                            <div class="text-center">
+                                <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h1>Toy</h1>
+            </div>
+            <?php foreach ($products_toy as $product) { ?>
+                <div class="col-4 py-3">
+                    <div class="card" style="width: 18rem;">
+                        <?php echo '<img src="'.$product->img.'" class="card-img-top" alt="">' ?>
+                        <div class="card-body">
+                            <h6 class="card-title"><?php echo $product->name ?></h6>
+                            <div class="card-text"><?php echo 'Prezzo: '.$product->price.'$'?></div>
+                            <div class="card-text h-50 "><?php echo 'Descrizione: '.$product->description ?></div>
+                            <div><?php echo 'Materiale: '.$product->material?></div>
+                            <div class="text-center">
+                                <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h1>Accessories</h1>
+            </div>
+            <?php foreach ($products_accessories as $product) { ?>
+                <div class="col-4 py-3">
+                    <div class="card" style="width: 18rem;">
+                        <?php echo '<img src="'.$product->img.'" class="card-img-top" alt="">' ?>
+                        <div class="card-body">
+                            <h6 class="card-title"><?php echo $product->name ?></h6>
+                            <div class="card-text"><?php echo 'Prezzo: '.$product->price.'$'?></div>
+                            <div class="card-text h-50 "><?php echo 'Descrizione: '.$product->description ?></div>
+                            <div class="text-center">
+                                <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+</body>
+
+</html>
