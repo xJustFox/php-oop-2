@@ -22,7 +22,7 @@
             $this->animal = $_animal;
         }
     }
-    
+
     // CLASSI FIGLIE
     class Food extends Product{
         public $amount;
@@ -57,5 +57,10 @@
             $this->category = $_category;
         }
     }
+
+    $dog = new Category('Cane');
+    $cat = new Category('Gatto');
+    $bird = new Category('Uccelli');
+    $fish = new Category('Pesci');
     
 ?>
