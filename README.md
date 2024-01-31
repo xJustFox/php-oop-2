@@ -16,7 +16,7 @@ Definite una proprietà privata ed un metodo privato all'interno di una classe, 
 - Royal Canin Mini Adult <br> 
 https://arcaplanet.vtexassets.com/arquivos/ids/284621/Mini-Adult.jpg?v=638182891693570000
 
-- Almo Nature Holistic Maintenance Medium Large Tonno e Riso <br>
+- Almo Nature Holistic Medium Adult con Pollo <br>
 https://arcaplanet.vtexassets.com/arquivos/ids/245173/almo-nature-holistic-cane-adult-medium-pollo-e-riso.jpg
 
 - Almo Nature Cat Daily Lattina <br>
