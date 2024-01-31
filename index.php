@@ -22,4 +22,40 @@
             $this->animal = $_animal;
         }
     }
+    
+    // CLASSI FIGLIE
+    class Food extends Product{
+        public $amount;
+        public $category;
+
+        public function __construct($_name,$_img,$_price,$_description,Category $_category,$_amount){
+
+            parent::__construct($_name,$_img, $_price, $_description);
+            $this->amount = $_amount;
+            $this->category = $_category;
+        }
+    }
+
+    class Toy extends Product{
+        public $material;
+        public $category;
+
+        public function __construct($_name,$_img, $_price,$_description,Category $_category,$_material){
+
+            parent::__construct($_name,$_img, $_price, $_description);
+            $this->material = $_material;
+            $this->category = $_category;
+        }
+    }
+
+    class Accessories extends Product{
+        public $category;
+
+        public function __construct($_name,$_img,$_price,$_description,Category $_category){
+
+            parent::__construct($_name,$_img, $_price,$_description);
+            $this->category = $_category;
+        }
+    }
+    
 ?>
