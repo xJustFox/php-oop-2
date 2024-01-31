@@ -13,4 +13,13 @@
             $this->description = $_description;
         }
     }
+
+    //CLASSE ANIMALI
+    class Category{
+        public $animal;
+
+        public function __construct($_animal){
+            $this->animal = $_animal;
+        }
+    }
 ?>
