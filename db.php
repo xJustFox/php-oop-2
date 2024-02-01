@@ -17,7 +17,5 @@
     $gabbie = new Accessories('Ferplast','Voliera Wilma in Legno','https://arcaplanet.vtexassets.com/arquivos/ids/258384/voliera-wilma1.jpg',335.85,'Una raffinata e spaziosa voliera per canarini.', $bird);
     $filtri = new Accessories('Tetra','Cartucce Filtranti per Filtro EasyCrystal','https://arcaplanet.vtexassets.com/arquivos/ids/272741/tetra-easycrystal-filterpack-250-300.jpg',10.68,"Per un'acqua cristallina e sana innovative cartucce filtranti.",$fish);
 
-    $products_food= [$croccantini_1,$croccantini_2,$umido,$mangime];
-    $products_toy= [$giocattolo_1,$giocattolo_2];
-    $products_accessories= [$gabbie,$filtri];
+    $products= [$croccantini_1,$croccantini_2,$umido,$mangime,$giocattolo_1,$giocattolo_2,$gabbie,$filtri];
 ?>
